@@ -1,9 +1,10 @@
-////////////////////////////////////
+// Import
+const axios = require('axios');
+
 // Data
 let url = "https://60e726da15387c00173e4a97.mockapi.io/users";
 let ageName = 'age';
 
-////////////////////////////////////
 // Functions
 function sumNumbers(array, parameterName) {
     let sum = 0
@@ -24,8 +25,6 @@ function initialize(users) {
 }
 
 //
-fetch(url).then(function (response) {
-    response.json().then(function (users) {
-        initialize(users)
-    });
-});
+axios.get(url).then((res) => {
+    initialize(res.data)
+})
